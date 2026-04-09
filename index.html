@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ODCOR Rack Dashboard</title>
+<title>ODC PF Environment Dashboard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:#0d1117;color:#c9d1d9;display:flex;flex-direction:column;height:100vh}
@@ -80,7 +80,7 @@ h2{font-size:16px;color:#f0f6fc;margin-bottom:12px}
 <body>
 <div class="header">
   <div>
-    <h1>🔲 ODCOR + ODUnallocated Rack Dashboard</h1>
+    <h1>🔲 ODC PF Environment Dashboard</h1>
     <div class="sub">OneDrive ODCOR Production + ODUnallocated · DeviceManager (Kusto) + ODCView.csv Decom Data · Last 14 days</div>
   </div>
   <div class="stats">
@@ -268,7 +268,7 @@ function renderContent() {
       <div class="decom-banner ${cls}" style="margin-top:12px">
         <div class="decom-icon">${completedEnv.group === 'Ready' ? '✅' : '⬜'}</div>
         <div class="decom-info">
-          <div class="decom-date">Decommissioned: ${dateStr}</div>
+          <div class="decom-date">WM Target: ${dateStr}</div>
           <div class="decom-group">${completedEnv.group} · Cluster: ${completedEnv.cluster} · HW SKU: ${completedEnv.sku} · No active machines in Kusto</div>
         </div>
       </div>
@@ -303,7 +303,7 @@ function renderContent() {
     const cls = dc.group === 'Ready' ? 'ready' : dc.group === 'Near Ready' ? 'near-ready' : dc.group === 'GLS Infra Racks' ? 'gls' : 'transferred';
     const icon = dc.group === 'Ready' ? '⚠️' : dc.group === 'Near Ready' ? '🔶' : '📋';
     const dateStr = dc.date || 'TBD';
-    html += `<div class="decom-banner ${cls}"><div class="decom-icon">${icon}</div><div class="decom-info"><div class="decom-date">Decom Date: ${dateStr}</div><div class="decom-group">${dc.group} · HW SKU: ${dc.sku}</div></div></div>`;
+    html += `<div class="decom-banner ${cls}"><div class="decom-icon">${icon}</div><div class="decom-info"><div class="decom-date">WM Target: ${dateStr}</div><div class="decom-group">${dc.group} · HW SKU: ${dc.sku}</div></div></div>`;
   }
 
   // Summary stats
