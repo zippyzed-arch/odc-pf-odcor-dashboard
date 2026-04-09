@@ -210,7 +210,7 @@ function buildSidebar() {
       badgeHtml = `<div class="badges"><span class="badge badge-decom ${cls}">${dc.group}${dateStr}</span></div>`;
     }
     div.innerHTML = `<div class="env-header ${selectedEnv === env ? 'selected' : ''}" data-env="${env}">
-      <div class="env-name"><span>${env.replace(/P00[01]-Prod-/,'')}</span><span class="env-count">${mc} machines · ${envRacks.length} racks</span></div>
+      <div class="env-name"><span>${env.replace(/P00[01]-Prod-/,'-')}</span><span class="env-count">${mc} machines · ${envRacks.length} racks</span></div>
       ${badgeHtml}
       <div class="health-bar">${buildHealthBar(st, total)}</div>
     </div>`;
@@ -296,7 +296,7 @@ function renderContent() {
   const skus = [...new Set(filtered.flatMap(r => r.skus))];
   const dc = filtered[0].decom;
 
-  let html = `<h2>${selectedEnv.replace(/P00[01]-Prod-/, '')}</h2>`;
+  let html = `<h2>${selectedEnv.replace(/P00[01]-Prod-/, '-')}</h2>`;
 
   // Decom banner
   if (dc) {
@@ -455,7 +455,7 @@ function showTooltip(e, r) {
     decomInfo = `<div class="tt-row" style="margin-top:6px;border-top:1px solid #30363d;padding-top:4px"><span class="tt-label" style="color:#bc8cff">Decom</span><span class="tt-val">${r.decom.group} · ${dateStr}</span></div>`;
   }
   tt.innerHTML = `<div class="tt-title">${r.rack}</div>
-    <div class="tt-row"><span class="tt-label">Environment</span><span class="tt-val">${r.env.replace(/P00[01]-Prod-/, '')}</span></div>
+    <div class="tt-row"><span class="tt-label">Environment</span><span class="tt-val">${r.env.replace(/P00[01]-Prod-/, '-')}</span></div>
     <div class="tt-row"><span class="tt-label">Cluster</span><span class="tt-val">${r.cluster}</span></div>
     <div class="tt-row"><span class="tt-label">Deployment</span><span class="tt-val">${r.deploymentId}</span></div>
     <div class="tt-row"><span class="tt-label">Functions</span><span class="tt-val">${r.functions.join(', ')}</span></div>
